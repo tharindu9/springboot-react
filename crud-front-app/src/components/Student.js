@@ -4,6 +4,7 @@ import { MDBDataTable } from 'mdbreact';
 
 
 
+
 class Student extends Component {
 
     render(){
@@ -62,6 +63,10 @@ class Student extends Component {
 
         return(
 <div>
+<h6>
+    <b>Student detail</b>
+    
+</h6>
 <MDBDataTable
       striped
       bordered
