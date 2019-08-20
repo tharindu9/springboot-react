@@ -4,14 +4,9 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
-
-
-
-
+import FormControl from '@material-ui/core/FormControl';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
-
-
-
 
 class StudentForm extends Component {
 
@@ -19,28 +14,34 @@ class StudentForm extends Component {
         super(props)
         this.state = {
             name : "",
-            male : 0,
+            year : 0,
             age : 0,
             city : ""
         }
 
-        this.handelChange = this.handelChange.bind(this)
+        this.handelChange = this.handelChange.bind(this);
+        this.addStudent = this.addStudent.bind(this)
     }
 
     handelChange(e){
      this.setState ({
         [e.target.name] : [e.target.value]
      })
-
-     
     }
 
+    addStudent(){
+        console.log("click submit")
+        const oldState = this.state;
+        this.props.addData()
+        this.state = oldState;
+    }
     
     render(){
     
-        return(
+    return(
      <div>
-    <h6>
+    <h6 >
+    
     <b>Enter Student detail</b>
     
     </h6>
@@ -57,33 +58,29 @@ class StudentForm extends Component {
         className = "inputField"
       />
       <br/>
-      <InputLabel htmlFor="age-helper">Age</InputLabel>
+
+<FormControl fullWidth>
+ <InputLabel>Year</InputLabel>
   <Select
-          label="Gender"
-          value={this.state.male}
-          onChange={this.handleChange}
+          label="year"
+          value={this.state.year}
+          onChange={this.handelChange}
           fullWidth
-         
+          inputProps={{
+            name: 'year',
+            id: 'year-simple',
+          }}
         >
-          <MenuItem value={'m'}>Male</MenuItem>
-          <MenuItem value={'fm'}>Female</MenuItem>
-        </Select>
+          <MenuItem value={1}>First year</MenuItem>
+          <MenuItem value={2}>Second year</MenuItem>
+          <MenuItem value={3}>Thrid year</MenuItem>
+          <MenuItem value={4}>Fourth year</MenuItem>
+  </Select>
 
     
-
+  </FormControl>
    
-      <br/>
-         <TextField
-        id="age"
-        label="Age"
-        name = "age"
-        fullWidth
-        type = "number"
-        style={{ margin: 8 }}
-        value={this.state.age}
-        onChange = {this.handelChange}
-        className = "inputField"
-      />
+    
       <br/>
          <TextField
         id="city"
@@ -95,12 +92,24 @@ class StudentForm extends Component {
         onChange = {this.handelChange}
         className = "inputField"
       />
+        <br/>
+         <TextField
+        id="age"
+        label="Age"
+        name = "age"
+        fullWidth
+        type = "number"
+        style={{ margin: 8 }}
+        value={this.state.age}
+        onChange = {this.handelChange}
+        className = "inputField"
+      />
 
         </div>
-        <Button variant="contained" color="primary" className="submitButton">
-        Primary
+        <Button variant="contained" color="primary" className="submitButton" onClick={this.addStudent}>
+        Submit
       </Button>
-            </div>
+     </div>
         )
     }
 }
