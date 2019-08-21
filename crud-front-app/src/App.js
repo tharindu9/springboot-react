@@ -14,12 +14,12 @@ class App extends Component {
       studentData : []
     }
 
-    this.addData = this.addData.bind(this)
+   // this.addData = this.addData.bind(this)
   }
 
-  addData(){
-   console.log("data" )
-  }
+  // addData(){
+  //  console.log("data" )
+  // }
 
   render(){
     return (

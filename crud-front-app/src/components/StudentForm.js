@@ -29,10 +29,10 @@ class StudentForm extends Component {
      })
     }
 
-    addStudent(){
+    addStudent(props){
         console.log("click submit")
         const oldState = this.state;
-        this.props.addData()
+       // this.props.addData()
         this.state = oldState;
     }
     
