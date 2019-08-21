@@ -29,9 +29,9 @@ class App extends Component {
         </header>
   
         <div className="modal-body row">
-        <div className="col-md-6">
+        <div className="col-md-4">
         <StudentForm/>  </div>
-       <div className="col-md-6">
+       <div className="col-md-8">
        <Student/>
        </div>
        </div>

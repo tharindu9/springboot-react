@@ -1,5 +1,13 @@
 import React , {Component} from 'react';
-import { MDBDataTable } from 'mdbreact';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TablePagination from '@material-ui/core/TablePagination';
+import Paper from '@material-ui/core/Paper';
+import { number } from 'prop-types';
 
 
 class Student extends Component {
@@ -7,72 +15,71 @@ class Student extends Component {
 constructor(props){
   super(props)
   this.state = {
-    data : []
+ 
+    
   }
 }
 
 componentWillMount(){
-  fetch('https://jsonplaceholder.typicode.com/todos')
+  fetch('https://jsonplaceholder.typicode.com/posts')
   .then(response => response.json())
   .then(json=>{
     console.log(json);
-    this.setState({
-      data : json
-    })
   })
 }
 
 
-    render(){
-        
-            const data = {
-              columns: [
-                {
-                  label: 'Name',
-                  field: 'name',
-                  sort: 'asc',
-                  width: 150
-                },
-                {
-                  label: 'Grade',
-                  field: 'grade',
-                  sort: 'asc',
-                  width: 270
-                },
-                {
-                  label: 'City',
-                  field: 'city',
-                  sort: 'asc',
-                  width: 200
-                },
-                {
-                  label: 'Age',
-                  field: 'age',
-                  sort: 'asc',
-                  width: 100
-                },
-               
-              ],
-             rows: this.state.data
 
-             
-            }
-        
-            
 
-        return(
-<div>
- 
+
+
+ render(){ 
+  var rows = [
+    {name:'Tharindu Ariyarathna', city :"Kurunegala", year:2, age:24},
+    {name:'Hashan rathnayeka', city :"matara", year:3, age:24},
+    {name:'Ishan chathura', city :"matara", year:4, age:27},
+    
+
+    
+  ]
+  return(
+      <div>
 <h6>
     <b>Student detail</b>
     
 </h6>
-<MDBDataTable
-      striped
-      bordered
-      small
-      data={data}
-    />
+
+      <Table >
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Name</TableCell>
+            <TableCell align="right">City</TableCell>
+            <TableCell align="right">Year</TableCell>
+            <TableCell align="right">Age</TableCell>
+           
+            <TableCell align="right">delete</TableCell>
+            <TableCell align="right">edit</TableCell>
+
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(row => (
+            <TableRow key={row.year}>
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell align="right">{row.city}</TableCell>
+              <TableCell align="right">{row.year}</TableCell>
+              <TableCell align="right">{row.age}</TableCell>
+              <TableCell align="right">delete</TableCell>
+              <TableCell align="right">edit</TableCell>
+
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+   
+
     </div>
         )
     }
@@ -80,55 +87,3 @@ componentWillMount(){
 
 export default Student;
 
-/**
- * 
-            const data = {
-              columns: [
-                {
-                  label: 'Name',
-                  field: 'name',
-                  sort: 'asc',
-                  width: 150
-                },
-                {
-                  label: 'Grade',
-                  field: 'grade',
-                  sort: 'asc',
-                  width: 270
-                },
-                {
-                  label: 'City',
-                  field: 'city',
-                  sort: 'asc',
-                  width: 200
-                },
-                {
-                  label: 'Age',
-                  field: 'age',
-                  sort: 'asc',
-                  width: 100
-                },
-               
-              ],
-              rows: [
-                {
-                  name: 'Tiger Nixon',
-                  grade: 'System Architect',
-                  city: 'Edinburgh',
-                  age: '61',
-                },
-                {
-                  name: 'Garrett Winters',
-                  grade: 'Accountant',
-                  city: 'Tokyo',
-                  age: '63',
-                },
-                {
-                  name: 'Ashton Cox',
-                  grade: 'Junior Technical Author',
-                  city: 'San Francisco',
-                  age: '66',
-                }
-              ]
-            }
- */
