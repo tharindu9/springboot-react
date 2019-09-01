@@ -7,4 +7,5 @@ spring:
     #initialization-mode: always
   jpa:
     hibernate:
-      ddl: create
+      ddl-auto: create
+    show-sql : true
