@@ -27,6 +27,9 @@ public class Student {
     }
 
     public void setName(String name) {
+         if(name == null || name.trime().length()==0){
+            throw new RuntimeException("Invalide  name");
+        }
         this.name = name;
     }
 
@@ -35,6 +38,9 @@ public class Student {
     }
 
     public void setCity(String city) {
+        if(city == null || city.trime().length()==0){
+            throw new RuntimeException("Invalide city name");
+        }
         this.city = city;
     }
 
@@ -43,14 +49,21 @@ public class Student {
     }
 
     public void setAge(Integer age) {
+        if(age<0){
+            throw new RuntimeException("Age must be greater than 0");
+        }
         this.age = age;
     }
 
     public Integer getYear() {
+        
         return year;
     }
 
     public void setYear(Integer year) {
+        if(year<0 || year >4){
+            throw new RuntimeException("Year must be in the range 0 and 4");
+        }
         this.year = year;
     }
 
