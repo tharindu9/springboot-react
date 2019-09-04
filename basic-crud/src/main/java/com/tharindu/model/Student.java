@@ -27,7 +27,7 @@ public class Student {
     }
 
     public void setName(String name) {
-         if(name == null || name.trime().length()==0){
+         if(name == null || name.trim().length()==0){
             throw new RuntimeException("Invalide  name");
         }
         this.name = name;
@@ -38,7 +38,7 @@ public class Student {
     }
 
     public void setCity(String city) {
-        if(city == null || city.trime().length()==0){
+        if(city == null || city.trim().length()==0){
             throw new RuntimeException("Invalide city name");
         }
         this.city = city;
