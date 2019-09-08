@@ -30,4 +30,14 @@ public class StudentController {
     public void delete(@PathVariable Integer id){
          studentService.delete(id);
     }
+
+    @RequestMapping(value = "/id" , method = RequestMethod.GET)
+    public ResponseEntity<Student> findById(@PathVariable  Integer id){
+        this.studentService.findById(id);
+        if(this.studentService.findById(id)!=null){
+            return ResponseEntity.ok(this.studentService.findById(id));
+        }
+        else
+            return null;
+    }
 }
